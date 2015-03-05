@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+file *f;
+
 void main(){
 	int matricula;
 	char nome[100];
