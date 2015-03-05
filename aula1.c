@@ -9,8 +9,8 @@ void main(){
 	printf("Digite Matrícula: ");
 	scanf("%d", &matricula);
 	printf("Digite Nome: ");
-	scanf("%s", &nome);
+	scanf("%s", nome);
 	f = fopen("saida.txt", "w");
-	fprint(f, "%d%s\n", matricula, nome);
+	fprint(f, "%d %s\n", matricula, nome);
 	fclose(f);
 }
