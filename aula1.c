@@ -11,6 +11,6 @@ void main(){
 	printf("Digite Nome: ");
 	scanf("%s", nome);
 	f = fopen("saida.txt", "w");
-	fprint(f, "%d %s\n", matricula, nome);
+	fprintf(f, "%d %s\n", matricula, nome);
 	fclose(f);
 }
