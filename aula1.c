@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-file *f;
+FILE*f;
 
 void main(){
 	int matricula;
@@ -11,6 +11,6 @@ void main(){
 	printf("Digite Nome: ");
 	scanf("%s", &nome);
 	f = fopen("saida.txt", "w");
-	fprint(f, "%d%s\n", matricula, nome");
+	fprint(f, "%d%s\n", matricula, nome);
 	fclose(f);
 }
