@@ -4,11 +4,8 @@
 //Leonso R. Leitão
 
 void le_alunos(int* matriculas, char nomes[][50], int* n){
-    int mat;
-    char c;
-    char nome[50];
-    int i;
-    int linha;
+    int mat, i, linha;
+    char c, nome[50];
     FILE*f = fopen("alunos.txt", "r");
     linha = 0;
     while(feof(f) == 0){
@@ -32,20 +29,20 @@ void le_alunos(int* matriculas, char nomes[][50], int* n){
 
 void leitor_nota(float* media){
     int i = 0, mat;
-    float n1, n2;
+    float nota1, nota2;
     FILE*f = fopen("notas.txt", "r");
     while(feof(f) == 0){
-        if(fscanf(f, "%d %f %f\n", &mat, &n1, &n2) <= 0)
+        if(fscanf(f, "%d %f %f\n", &mat, &nota1, &nota2) <= 0)
             break;
-        media[i] = (n1+n2)/2;
+        media[i] = (nota1 + nota2)/2;
         i++;
     }
     fclose(f);
 }
 
-void procura(char* nome, char nomes[][50], int n, float* media){
+void procurar_alunos(char* nome, char nomes[][50], int n, float* media){
     int i;
-    for(i = 0; i<n; i++){
+    for(i = 0; i < n; i++){
         if(strstr(nomes[i], nome) != NULL){
             printf("%.2f %s\n", media, nomes);
         }
@@ -64,7 +61,7 @@ int main(int argc, char** argv){
     int n;
     le_alunos(matriculas, nomes, &n);
     leitor_nota(med);
-    procura(nome, nomes, n, med);
+    procurar_alunos(nome, nomes, n, med);
 
     return (0);
 }
