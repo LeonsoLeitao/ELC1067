@@ -3,7 +3,7 @@
 
 //Leonso R. Leitão
 
-void le_alunos(int* matriculas, char[][50] nomes, int* n){
+void le_alunos(int* matriculas, char nomes[][50], int* n){
     int mat;
     char c;
     char nome[50];
@@ -12,7 +12,7 @@ void le_alunos(int* matriculas, char[][50] nomes, int* n){
     FILE*f = fopen("alunos.txt", "R");
     linha = 0;
     while(feof(f) == 0){
-        if(fscanf(f, "%d", &mat) == 0)
+        if(fscanf(f, "%d", &mat) <= 0)
         break;
         i = 0;
         c = fgetc(f);
@@ -23,17 +23,23 @@ void le_alunos(int* matriculas, char[][50] nomes, int* n){
         }
         nome[i] = '\0';
         matriculas[linha]=mat;
-        strcpy(nomes[linha],nome);
+        strcpy(nomes[linha], nome);
         linha++;
     }
-    n = linha;
+    *n = linha;
     fclose(f);
+}
+
+void leitor_nota(){
+
+
+
 }
 
 int main(int argc, char** argv){
     char* nome;
     if(argc > 1){
-        nome = argv[1];
+        strcpy(nome, argv[1]);
         }
         printf("%s\n", nome);
         int matriculas[50];
