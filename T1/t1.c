@@ -13,7 +13,7 @@ void le_alunos(int* matriculas, char nomes[][50], int* n){
     linha = 0;
     while(feof(f) == 0){
         if(fscanf(f, "%d", &mat) <= 0)
-        break;
+            break;
         i = 0;
         c = fgetc(f);
         while(c != '\n'){
@@ -30,22 +30,31 @@ void le_alunos(int* matriculas, char nomes[][50], int* n){
     fclose(f);
 }
 
-void leitor_nota(){
-
-
+void leitor_nota(float* media){
+    int i = 0, mat;
+    float n1, n2;
+    FILE*f = fopen("alunos.txt", "R");
+    while(feof(f) == 0){
+        if(fscanf(f, "%d %f %f\n", &mat, &n1, &n2) == 0)
+            break;
+        media[i] = (n1+n2)/2;
+        i++;
+    }
+    fclose(f);
 
 }
 
 int main(int argc, char** argv){
     char* nome;
+    float med[50];
     if(argc > 1){
         strcpy(nome, argv[1]);
         }
-        printf("%s\n", nome);
-        int matriculas[50];
-        char nomes[50][50];
-        int n;
-        le_alunos(matriculas, nomes, &n);
-
+    printf("%s\n", nome);
+    int matriculas[50];
+    char nomes[50][50];
+    int n;
+    le_alunos(matriculas, nomes, &n);
+    leitor_nota(med);
 
 }
