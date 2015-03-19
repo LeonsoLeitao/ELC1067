@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-//Leonso R. Leitão
+//Leonso R. LeitÃ£o
 
 void le_alunos(int* matriculas, char nomes[][50], int* n){
     int mat, i, linha;
@@ -50,10 +50,11 @@ void procurar_alunos(char* nome, char nomes[][50], int n, float* media){
 }
 
 int main(int argc, char** argv){
-    char* nome;
+    char nome[50];
+    char* busca = nome;
     float med[50];
     if(argc > 1){
-        strcpy(nome, argv[1]);
+        strcpy(busca, argv[1]);
         }
     printf("%s\n", nome);
     int matriculas[50];
