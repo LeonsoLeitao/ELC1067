@@ -44,7 +44,7 @@ void procurar_alunos(char* nome, char nomes[][50], int n, float* media){
     int i;
     for(i = 0; i < n; i++){
         if(strstr(nomes[i], nome) != NULL){
-            printf("%.2f %s\n", media, nomes);
+            printf("%.2f %s\n", media[i], nomes[i]);
         }
     }
 }
