@@ -69,6 +69,11 @@ int main(int argc, char** argv){
     le_alunos(matriculas, nomes, &n);
     leitor_nota(med);
     procurar_alunos(nome, nomes, n, med);
+    free(nome);
+    free(med);
+    free(matriculas);
+    free(n);
+    free(nomes);
 
     return (0);
 }
