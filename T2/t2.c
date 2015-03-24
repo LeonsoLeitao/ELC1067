@@ -50,14 +50,17 @@ void procurar_alunos(char* nome, char nomes[][50], int n, float* media){
 }
 
 int main(int argc, char** argv){
-    char nome[50];
+    char* nome;
     char* busca = nome;
-    float med[50];
+    float* med;
+    med = (float*)malloc(50*sizeof(float));
+    nome = (char*)malloc(50*sizeof(char));
     if(argc > 1){
         strcpy(busca, argv[1]);
         }
     printf("%s\n", nome);
-    int matriculas[50];
+    int* matriculas;
+    matriculas = (int*)malloc(50*sizeof(int));
     char nomes[50][50];
     int n;
     le_alunos(matriculas, nomes, &n);
