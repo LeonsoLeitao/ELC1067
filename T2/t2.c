@@ -64,7 +64,8 @@ int main(int argc, char** argv){
     printf("%s\n", nome);
     int* matriculas;
     matriculas = (int*)malloc(50*sizeof(int));
-    char nomes[50][50];
+    char** nomes;
+    nomes = (char**)malloc(50*sizeof(char*));
     int* n;
     n = (int*)malloc(50*sizeof(int));
     le_alunos(matriculas, nomes, n);
