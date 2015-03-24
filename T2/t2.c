@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 
 //Leonso R. Leitão
@@ -57,7 +56,6 @@ int main(int argc, char** argv){
     char* nome;
     char* busca = nome;
     float* med;
-    int i;
     med = (float*)malloc(50*sizeof(float));
     nome = (char*)malloc(50*sizeof(char));
     if(argc > 1){
@@ -77,10 +75,7 @@ int main(int argc, char** argv){
     free(med);
     free(matriculas);
     free(n);
-    for(i = 0; i < *n; i++){
-        free(nomes[i]);
-    }
-     free(nomes);
+    free(nomes);
 
     return (0);
 }
