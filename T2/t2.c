@@ -43,7 +43,7 @@ void leitor_nota(float* media){
     fclose(f);
 }
 
-void procurar_alunos(char* nome, char nomes[][50], int n, float* media){
+void procurar_alunos(char* nome, char** nomes, int n, float* media){
     int i;
     for(i = 0; i < n; i++){
         if(strstr(nomes[i], nome) != NULL){
