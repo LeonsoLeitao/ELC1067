@@ -43,9 +43,9 @@ void leitor_nota(float* media){
     fclose(f);
 }
 
-void procurar_alunos(char* nome, char** nomes, int n, float* media){
+void procurar_alunos(char* nome, char** nomes, int* n, float* media){
     int i;
-    for(i = 0; i < n; i++){
+    for(i = 0; i < *n; i++){
         if(strstr(nomes[i], nome) != NULL){
             printf("%.2f %s\n", media[i], nomes[i]);
         }
@@ -65,8 +65,9 @@ int main(int argc, char** argv){
     int* matriculas;
     matriculas = (int*)malloc(50*sizeof(int));
     char nomes[50][50];
-    int n;
-    le_alunos(matriculas, nomes, &n);
+    int* n;
+    n = (int*)malloc(50*sizeof(int));
+    le_alunos(matriculas, nomes, n);
     leitor_nota(med);
     procurar_alunos(nome, nomes, n, med);
     free(nome);
