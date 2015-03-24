@@ -3,9 +3,11 @@
 
 //Leonso R. Leitão
 
-void le_alunos(int* matriculas, char nomes[][50], int* n){
+void le_alunos(int* matriculas, char** nomes, int* n){
     int mat, i, linha;
-    char c, nome[50];
+    char c;
+    char* nome;
+    nome = (char*)malloc(50*sizeof(char));
     FILE*f = fopen("alunos.txt", "r");
     linha = 0;
     while(feof(f) == 0){
@@ -20,6 +22,7 @@ void le_alunos(int* matriculas, char nomes[][50], int* n){
         }
         nome[i] = '\0';
         matriculas[linha] = mat;
+        nomes[linha] = ((char*)malloc((strlen(nome)+1)*sizeof(char)));
         strcpy(nomes[linha], nome);
         linha++;
     }
