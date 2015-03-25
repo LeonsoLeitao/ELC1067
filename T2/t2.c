@@ -61,7 +61,7 @@ int main(int argc, char** argv){
     med = (float*)malloc(50*sizeof(float));
     nome = (char*)malloc(50*sizeof(char));
     if(argc > 1){
-        strcpy(busca, argv[1]);
+        busca = argv[1];
         }
     printf("%s\n", nome);
     int* matriculas;
