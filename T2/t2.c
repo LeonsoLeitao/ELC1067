@@ -58,8 +58,8 @@ void procurar_alunos(char* nome, char** nomes, int* matriculas, int* matritest, 
 }
 
 int main(int argc, char** argv){
-    char* nome;
-    float* med;
+    char *nome;
+    float *med;
     int i, n;
     med = (float*)malloc(50*sizeof(float));
     nome = (char*)malloc(50*sizeof(char));
@@ -75,7 +75,6 @@ int main(int argc, char** argv){
     le_alunos(matriculas, nomes, &n);
     leitor_nota(med, matritest);
     procurar_alunos(nome, nomes, matriculas, matritest, &n, med);
-    free(nome);
     free(med);
     free(matriculas);
     free(matritest);
