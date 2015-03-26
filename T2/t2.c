@@ -4,7 +4,7 @@
 
 //Leonso R. Leitão
 
-void le_alunos(int* matriculas, char** nomes, int* n){
+void le_alunos(int* matriculas, char** nomes, int *n){
     int mat, i, linha;
     char c;
     char* nome;
@@ -31,53 +31,55 @@ void le_alunos(int* matriculas, char** nomes, int* n){
     fclose(f);
 }
 
-void leitor_nota(float* media){
+void leitor_nota(float* media, int* matritest){
     int i = 0, mat;
     float nota1, nota2;
     FILE*f = fopen("notas.txt", "r");
     while(feof(f) == 0){
         if(fscanf(f, "%d %f %f\n", &mat, &nota1, &nota2) <= 0)
             break;
+        matritest[i] = mat;
         media[i] = (nota1 + nota2)/2;
         i++;
     }
     fclose(f);
 }
 
-void procurar_alunos(char* nome, char** nomes, int* n, float* media){
-    int i;
+void procurar_alunos(char* nome, char** nomes, int* matriculas, int* matritest, int *n, float* media){
+    int i, j;
     for(i = 0; i < *n; i++){
+        j = 0;
         if(strstr(nomes[i], nome) != NULL){
-            printf("%.2f %s\n", media[i], nomes[i]);
+            while(matriculas[i] != matritest[j] && matritest[j]>0)
+                j++;
+            printf("%.2f %s\n", media[j], nomes[i]);
         }
     }
 }
 
 int main(int argc, char** argv){
     char* nome;
-    char* busca = nome;
     float* med;
-    int i;
+    int i, n;
     med = (float*)malloc(50*sizeof(float));
     nome = (char*)malloc(50*sizeof(char));
     if(argc > 1){
-        busca = argv[1];
+        nome = argv[1];
         }
     printf("%s\n", nome);
-    int* matriculas;
+    int *matriculas, *matritest;
     matriculas = (int*)malloc(50*sizeof(int));
+    matritest = (int*)malloc(50*sizeof(int));
     char** nomes;
     nomes = (char**)malloc(50*sizeof(char*));
-    int* n;
-    n = (int*)malloc(50*sizeof(int));
-    le_alunos(matriculas, nomes, n);
-    leitor_nota(med);
-    procurar_alunos(nome, nomes, n, med);
+    le_alunos(matriculas, nomes, &n);
+    leitor_nota(med, matritest);
+    procurar_alunos(nome, nomes, matriculas, matritest, &n, med);
     free(nome);
     free(med);
     free(matriculas);
-    free(n);
-    for(i = 0; i < *n; i++){
+    free(matritest);
+    for(i = 0; i < n; i++){
         free(nomes[i]);
     }
      free(nomes);
